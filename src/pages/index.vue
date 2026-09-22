@@ -16,4 +16,5 @@
 
 <script setup>
 // Vos scripts ou imports ici
+
 </script>
