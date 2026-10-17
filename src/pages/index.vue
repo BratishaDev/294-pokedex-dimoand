@@ -16,5 +16,23 @@
 
 <script setup>
 // Vos scripts ou imports ici
+const pokemons = ref([]);
 
+async function fetchPokemons() {
+  try {
+    // On envoie une requête GET à l’API locale
+    const response = await fetch('http://localhost:3535/pokemons')
+    // On convertit la réponse en objet JavaScript
+    pokemons.value = await response.json()
+    // On affiche le résultat dans la console
+    console.log('Pokémns chargés : ', pokemons.value)
+  } catch (error) {
+    // En cas d’erreur, on affiche le message d’erreur
+    console.error('Erreur lors de la récupération des Pokémon:', error)
+  }
+}
+
+onMounted(() => {
+  fetchPokemons()
+})
 </script>
