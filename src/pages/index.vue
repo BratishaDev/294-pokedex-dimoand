@@ -11,11 +11,21 @@
       Pokédex
     </h1>
     <!-- TODO: Afficher les Pokémon ici -->
+    <v-row>
+      <v-col v-for="pokemon in pokemons" :key="pokemon.id" lg="3">
+        <v-card>
+          <v-img :src="getImageUrl(pokemon.img)"/>
+          <v-card-title>{{ pokemon.name }}</v-card-title>
+          <v-card-subtitle>Niveau {{ pokemon.level }}</v-card-subtitle>
+        </v-card>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
 <script setup>
 // Vos scripts ou imports ici
+import { getImageUrl } from '@/utils/imageUrl'
 const pokemons = ref([]);
 
 async function fetchPokemons() {
@@ -35,4 +45,7 @@ async function fetchPokemons() {
 onMounted(() => {
   fetchPokemons()
 })
+</script>
+
+<script setup lang="ts">
 </script>
