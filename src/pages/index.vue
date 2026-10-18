@@ -20,16 +20,7 @@
         md="4"
         lg="3"
       >
-        <v-card>
-          <v-img
-            :src="getImageUrl(pokemon.img)"
-            :alt="pokemon.name"
-            height="200"
-            cover
-          />
-          <v-card-title>{{ pokemon.name }}</v-card-title>
-          <v-card-subtitle>Niveau {{ pokemon.level }}</v-card-subtitle>
-        </v-card>
+        <pokemon-card :pokemon="pokemon" />
       </v-col>
     </v-row>
   </v-container>
@@ -37,7 +28,8 @@
 
 <script setup>
 // Vos scripts ou imports ici
-import { getImageUrl } from '@/utils/imageUrl'
+import PokemonCard from "@/components/PokemonCard.vue";
+
 const pokemons = ref([]);
 
 async function fetchPokemons() {
@@ -57,4 +49,6 @@ async function fetchPokemons() {
 onMounted(() => {
   fetchPokemons()
 })
+
+
 </script>
