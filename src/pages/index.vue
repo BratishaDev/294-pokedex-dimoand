@@ -12,9 +12,21 @@
     </h1>
     <!-- TODO: Afficher les Pokémon ici -->
     <v-row>
-      <v-col v-for="pokemon in pokemons" :key="pokemon.id" lg="3">
+      <v-col
+        v-for="pokemon in pokemons"
+        :key="pokemon.id"
+        cols="12"
+        sm="6"
+        md="4"
+        lg="3"
+      >
         <v-card>
-          <v-img :src="getImageUrl(pokemon.img)"/>
+          <v-img
+            :src="getImageUrl(pokemon.img)"
+            :alt="pokemon.name"
+            height="200"
+            cover
+          />
           <v-card-title>{{ pokemon.name }}</v-card-title>
           <v-card-subtitle>Niveau {{ pokemon.level }}</v-card-subtitle>
         </v-card>
@@ -35,7 +47,7 @@ async function fetchPokemons() {
     // On convertit la réponse en objet JavaScript
     pokemons.value = await response.json()
     // On affiche le résultat dans la console
-    console.log('Pokémns chargés : ', pokemons.value)
+    console.log('Pokémons chargés : ', pokemons.value)
   } catch (error) {
     // En cas d’erreur, on affiche le message d’erreur
     console.error('Erreur lors de la récupération des Pokémon:', error)
@@ -45,7 +57,4 @@ async function fetchPokemons() {
 onMounted(() => {
   fetchPokemons()
 })
-</script>
-
-<script setup lang="ts">
 </script>
