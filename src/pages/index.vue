@@ -20,7 +20,7 @@
         md="4"
         lg="3"
       >
-        <pokemon-card :pokemon="pokemon" />
+        <pokemon-card :pokemon="pokemon"/>
       </v-col>
     </v-row>
   </v-container>
